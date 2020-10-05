@@ -1,2 +1,5 @@
+#过滤node模块
 /node_modules/
+
+#过滤package安装日志
 /package-lock.json

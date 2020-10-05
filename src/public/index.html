@@ -6,10 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <button @click='posts()'>发送请求</button>
+    <button onclick='posts()'>发送请求</button>
     <script>
         function posts(){
-        var data = {userName:'1371446705',password:'123456'}
+        var data = {userName:'root',password:'123'}
         fetch('http://localhost:3000/login',{
             method:'POST',
             body:JSON.stringify(data),
