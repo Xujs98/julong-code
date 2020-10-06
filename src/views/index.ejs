@@ -7,5 +7,10 @@
   <body>
     <h1><%= title %></h1>
     <p>EJS Welcome to <%= title %></p>
+    <p><%= locals.names %></p>
+
+   <%- include('widgets/user-info',{
+      isMe
+   }) %>
   </body>
 </html>

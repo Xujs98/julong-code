@@ -4,7 +4,9 @@ const formidable = require('formidable')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
-    title: 'Hello Koa 2!'
+    title: 'Hello Koa 2!',
+    name:'小松',
+    isMe:true
   })
 })
 
