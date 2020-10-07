@@ -5,6 +5,10 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const session = require('koa-generic-session')
+const redisStore = require('koa-redis')
+const {REDIS_SECRRT_KEY} = require('./cache/secretKeys')
+const {REDIS_CONF} = require('./conf/db')
 
 //路由列表
 const index = require('./routes/index')
@@ -16,6 +20,21 @@ onerror(app)
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
+}))
+
+//session 配置
+app.keys = [REDIS_SECRRT_KEY]
+app.use(session({
+  key:'julong.sid',     //cookie name
+  prefix:'julong:sess', //前缀
+  cookie:{
+    path:'/',
+    httpOnly:true,
+    maxAge:24*60*60*1000  //过期时间
+  },
+  store:redisStore({
+    all:'127.0.0.1:6379'
+  })
 }))
 
 
