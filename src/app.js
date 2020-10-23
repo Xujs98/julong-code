@@ -7,15 +7,26 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
-const {REDIS_SECRRT_KEY} = require('./cache/secretKeys')
+const { REDIS_SECRRT_KEY, SECRET } = require('./cache/secretKeys')
 const {REDIS_CONF} = require('./conf/db')
+const jwtkoa = require('koa-jwt')
 
 //路由列表
 const index = require('./routes/index')
 const users = require('./routes/users')
+const login = require('./routes/api/login')
 
 // error handler
 onerror(app)
+
+
+// 配置jwt
+app.use(jwtkoa({
+  secret: SECRET
+}).unless({
+  path: [/^\/user\/login/,/\/api\/private\/v1\/login/]  // 自定义忽略jwt验证
+}))
+
 
 // middlewares
 app.use(bodyparser({
@@ -60,6 +71,7 @@ app.use(views(__dirname + '/views', {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(login.routes(), login.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
