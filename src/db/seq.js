@@ -10,7 +10,7 @@ const {host,user,password,port,database} = MYSQL_CONF
 
 
 const conf = {
-    host:host,
+    host,
     dialect:"mysql"
 }
 
@@ -33,7 +33,7 @@ if(isProd){
 
 const seq = new Sequelize(database,user,password,conf)
 
-// sql.authenticate().then(()=>{
+// seq.authenticate().then(()=>{
 //     console.log("ok")
 // }).catch(()=>{
 //     console.log("err")

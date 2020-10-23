@@ -15,18 +15,19 @@ const jwtkoa = require('koa-jwt')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const login = require('./routes/api/login')
+const user = require('./routes/api/user')
 
 // error handler
 onerror(app)
 
-
+/*
 // 配置jwt
 app.use(jwtkoa({
   secret: SECRET
 }).unless({
   path: [/^\/user\/login/,/\/api\/private\/v1\/login/]  // 自定义忽略jwt验证
 }))
-
+*/
 
 // middlewares
 app.use(bodyparser({
@@ -68,9 +69,10 @@ app.use(views(__dirname + '/views', {
 
 
 
-// routes
+// routes 注册
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(user.routes(), user.allowedMethods()) // 用户操作
 app.use(login.routes(), login.allowedMethods())
 
 // error-handling

@@ -6,7 +6,7 @@ const {isProd} = require('../utils/env')
 
 
 let MYSQL_CONF = {
-    host:'localshot',
+    host:'localhost',
     user:'root',
     password:'qq1371446705',
     port:3306,
@@ -29,7 +29,7 @@ if(isProd){
 
     //线上 mysql 配置
     MYSQL_CONF = {
-        host:'localshot',
+        host:'localhost',
         user:'root',
         password:'qq1371446705',
         port:3306,

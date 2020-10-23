@@ -5,17 +5,17 @@
 
 const seq = require('./seq');
 
-// require('./model')
+require('./model/index')
 
 
-//测试连接
+// 测试连接
 seq.authenticate().then(()=>{
     console.log('OK');
 }).catch(()=>{
     console.log('err')
 })
 
-//执行同步
+// 执行同步
 seq.sync({force :true}).then(()=>{
     console.log('同步成功');
     process.exit();
