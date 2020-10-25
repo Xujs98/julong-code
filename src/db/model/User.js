@@ -32,7 +32,6 @@ const User = seq.define('user', {
   picture: {
     type: STRING,
     allowNull: true,
-    defaultValue: '',
     comment: '头像'
   }
 })

@@ -14,8 +14,7 @@ const jwtkoa = require('koa-jwt')
 //路由列表
 const index = require('./routes/index')
 const users = require('./routes/users')
-const login = require('./routes/api/login')
-const user = require('./routes/api/user')
+const userApiRouter = require('./routes/api/user') // 用户路由
 
 // error handler
 onerror(app)
@@ -72,8 +71,8 @@ app.use(views(__dirname + '/views', {
 // routes 注册
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-app.use(user.routes(), user.allowedMethods()) // 用户操作
-app.use(login.routes(), login.allowedMethods())
+app.use(userApiRouter.routes(), userApiRouter.allowedMethods()) // 用户操作
+
 
 // error-handling
 app.on('error', (err, ctx) => {
