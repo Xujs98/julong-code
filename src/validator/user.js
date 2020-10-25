@@ -1,26 +1,29 @@
- 
+/**
+ * @description user 数据格式校验
+ * @author Xujs
+ */
 
-const validate = require('./_validate')
+const validates = require('./_validate')
 
 // 校验规则
 const SCHEMA = {
     type: 'object',
     properties: {
-        username: {
+        userName: {
             type: 'string',
             pattern: '^[a-zA-Z][a-zA-Z0-9_]+$', // 字母开头，字母数字下划线
-            maxLength: 255,
-            minLength: 2
+            maxLength: 11,
+            minLength: 5
         },
         password: {
             type: 'string',
-            maxLength: 255,
-            minLength: 3
+            maxLength: 16,
+            minLength: 6
         },
         newPassword: {
             type: 'string',
-            maxLength: 255,
-            minLength: 3
+            maxLength: 16,
+            minLength: 6
         },
         nickName: {
             type: 'string',
@@ -29,11 +32,6 @@ const SCHEMA = {
         picture: {
             type: 'string',
             maxLength: 255
-        },
-        city: {
-            type: 'string',
-            maxLength: 255,
-            minLength: 2
         },
         gender: {
             type: 'number',
@@ -48,7 +46,7 @@ const SCHEMA = {
  * @param {Object} data 用户数据
  */
 function userValidate(data = {}) {
-    return validate(SCHEMA, data)
+    return validates(SCHEMA, data)
 }
 
 module.exports = userValidate

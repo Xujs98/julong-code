@@ -11,9 +11,9 @@ const ajv = new Ajv({
 /**
  * json schema 校验
  * @param {Object} schema json schema 规则
- * @param {*} data 待校验的数据
+ * @param {object} data 待校验的数据
  */
-function validate(schema, data = {}){
+function validates(schema, data = {}){
   const valid = ajv.validate(schema, data)
   if (!valid) {
     return ajv.errors[0]
@@ -21,4 +21,4 @@ function validate(schema, data = {}){
 }
 
 
-module.exports = validate
+module.exports = validates

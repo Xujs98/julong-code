@@ -27,5 +27,13 @@ module.exports = {
       message: '注册失败',
       status: 200
     }
+  },
+  // 数据格式校验错误
+  jsonSchemaFileInfo: {
+    data: {},
+    meta: {
+      message: '数据格式校验错误',
+      status: 501
+    }
   }
 }

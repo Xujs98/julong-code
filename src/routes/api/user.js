@@ -9,21 +9,19 @@ const util = require('util')
 const verify = util.promisify(jwt.verify)
 const { SECRET } = require('../../cache/secretKeys')
 const { isExist, register } = require('../../controller/user')
-
+const userValidate = require('../../validator/user')
+const { genValidator } = require('../../middlewares/validator')
 
 router.prefix('/api/private/v1')
 
 // 用户名是否存在
 router.post('/isExist', async (ctx, next) => {
   const { userName } = ctx.request.body
-  console.log(userName)
   ctx.body = await isExist(userName)
-
-
 })
 
 // 注册路由
-router.post('/register', async (ctx, next) => {
+router.post('/register', genValidator(userValidate), async (ctx, next) => {
   const { userName, password } = ctx.request.body
   ctx.body = await register({ userName, password })
 })
