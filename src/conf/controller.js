@@ -4,5 +4,7 @@
  */
 
 module.exports = {
-  DEFAULT_PICTURE: 'http://www.baidu.com'
+  DEFAULT_PICTURE: 'http://www.baidu.com',
+  DEFAULT_NICKNAME: '龙仔',
+  DEFAULT_GENDER: 3
 }

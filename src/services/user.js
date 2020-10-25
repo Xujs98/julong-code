@@ -5,9 +5,8 @@
 
 const { User } = require('../db/model/index') //数据模型
 const { formatUser } = require('./_format')
-
 /**
- * 
+ * 查询
  * @param {string} userName 用户
  * @param {string} password 密码
  */
@@ -37,7 +36,25 @@ async function getUserInfo(userName, password) {
 
 }
 
+/**
+ * 创建用户
+ * @param {string} userName 用户名 
+ * @param {string} password 密码 
+ * @param {number} gender 性别 
+ * @param {string} nickName 昵称 
+ */
+async function createUser({ userName, password, gender = 3, nickName  }){
+  const result = await User.create({
+    userName,
+    password,
+    gender: gender? gender : 3,
+    nickName: nickName? nickName : userName
+  })
+  return result.dataValues
+}
+
 
 module.exports = {
-  getUserInfo
+  getUserInfo,
+  createUser
 }

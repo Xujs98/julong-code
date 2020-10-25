@@ -3,7 +3,7 @@
  * @author  Xujs
  */
 
-const { DEFAULT_PICTURE, DEFAULT_NICKNAME } = require('../conf/controller')
+const { DEFAULT_PICTURE, DEFAULT_NICKNAME, DEFAULT_GENDER } = require('../conf/controller')
 
 /**
  * 用户默认头像
@@ -15,6 +15,8 @@ function _formatUserPicture(obj) {
     obj.picture = DEFAULT_PICTURE
     // 设置默认昵称
     obj.nickName = DEFAULT_NICKNAME
+    // 设置默认性别
+    obj.gender = DEFAULT_GENDER
   }
   return obj
 }

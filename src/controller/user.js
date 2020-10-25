@@ -3,9 +3,13 @@
  * @author  Xujs
  */
 
-const { getUserInfo } = require('../services/user')
+const { getUserInfo, createUser } = require('../services/user')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
-const { registerUserNameNotExistInfo } = require('../model/ErrorInfo')
+const { registerSuccessInfo } = require('../model/SuccessInfo')
+const md5 = require('md5')
+const { 
+  registerUserNameNotExistInfo, registerFailInfo, registerUserNameExistInfo 
+} = require('../model/ErrorInfo')
 
 /**
  * 用户名是否存在
@@ -15,26 +19,49 @@ async function isExist(userName) {
   const userInfo = await getUserInfo(userName)
   if (userInfo) {
     // 已存在
-    //return new SuccessModel(userInfo)
-    return {
-      data: {userInfo},
-      message: '不可以使用',
-      status: 500
-    
-    }
+    return new ErrorModel(registerUserNameExistInfo)
   }else {
+    // 可用
     return new ErrorModel(registerUserNameNotExistInfo)
-    // 不存在
-    // return {
-    //     data: {},
-    //     message: '可以使用',
-    //     status: 200
-      
-    // }
   }
 }
 
+/**
+ * 注册
+ * @param {string} userName 用户名
+ * @param {string} password 密码
+ */
+async function register({userName, password}){
+  const userInfo = await getUserInfo(userName)
+ 
+  if (userInfo) {
+    return new ErrorModel(registerUserNameExistInfo)
+  }
+
+  try {
+    await createUser({
+      userName,
+      password: md5(password)
+    })
+    return new SuccessModel(registerSuccessInfo)
+  } catch(ex) {
+    console.error(ex.message, ex.stack)
+    return new ErrorModel(registerFailInfo)
+  }
+  
+}
+
+/**
+ * 登录
+ * @param {string} userName 用户名 
+ * @param {string} password 密码 
+ */
+async function login({ userName, password }){
+
+}
 
 module.exports = {
-  isExist
+  isExist,
+  register,
+  login
 }
