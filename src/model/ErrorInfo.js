@@ -35,5 +35,12 @@ module.exports = {
       message: '数据格式校验错误',
       status: 501
     }
+  },
+  loginFailInfo: {
+    data: {},
+    meta: {
+      message: '登录失败,用户名或者密码错误',
+      status: 504
+    }
   }
 }

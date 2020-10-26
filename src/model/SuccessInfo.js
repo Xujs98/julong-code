@@ -3,11 +3,17 @@
  * @author Xujs
  */
 
+
 module.exports = {
   registerSuccessInfo: {
-    data: {},
     meta: {
       message: '注册成功',
+      status: 200
+    }
+  },
+  loginSuccessInfo: {
+    meta: {
+      message: '登录成功',
       status: 200
     }
   }

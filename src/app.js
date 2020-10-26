@@ -19,14 +19,14 @@ const userApiRouter = require('./routes/api/user') // 用户路由
 // error handler
 onerror(app)
 
-/*
+/
 // 配置jwt
 app.use(jwtkoa({
   secret: SECRET
 }).unless({
-  path: [/^\/user\/login/,/\/api\/private\/v1\/login/]  // 自定义忽略jwt验证
+  path: [/^\/user\/login/,/\/api\/private\/v1\/login/,/\/api\/private\/v1\/isExist/,/\/api\/private\/v1\/register/]  // 自定义忽略jwt验证
 }))
-*/
+
 
 // middlewares
 app.use(bodyparser({
