@@ -11,9 +11,16 @@ module.exports = {
       status: 200
     }
   },
+
   loginSuccessInfo: {
     meta: {
       message: '登录成功',
+      status: 200
+    }
+  },
+  menuSuccessInfo: {
+    meta: {
+      message: '获取菜单列表成功',
       status: 200
     }
   }

@@ -8,10 +8,10 @@ const util = require('util')
 const jwt = require('jsonwebtoken')
 const verify = util.promisify(jwt.verify)
 const { SECRET } = require('../cache/secretKeys')
-const { getUserInfo, createUser } = require('../services/user')
+const { getUserInfo, createUser, getMenus } = require('../services/user')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
 const md5 = require('md5')
-const { registerSuccessInfo, loginSuccessInfo } = require('../model/SuccessInfo') //成功返回信息
+const { registerSuccessInfo, loginSuccessInfo, menuSuccessInfo } = require('../model/SuccessInfo') //成功返回信息
 const { 
   registerUserNameNotExistInfo, registerFailInfo, registerUserNameExistInfo, 
   loginFailInfo
@@ -64,7 +64,7 @@ async function register({userName, password}){
  * @param {string} userName 用户名 
  * @param {string} password 密码 
  */
-async function login(ctx, userName, password){
+async function login(ctx, userName, password) {
   const userInfo = await getUserInfo(userName, md5(password))
   if (!userInfo) {
     // 登录失败
@@ -80,8 +80,23 @@ async function login(ctx, userName, password){
   return new SuccessModel(loginSuccessInfo)
 }
 
+/**
+ * 获取菜单
+ * @param {string} userName 用户名
+ */
+async function menus(userName) {
+  const res = await getMenus()
+  if(!res) {
+    return
+  }
+  menuSuccessInfo.data = {...res}
+
+  return new SuccessModel(menuSuccessInfo)
+}
+
 module.exports = {
   isExist,
   register,
-  login
+  login,
+  menus
 }

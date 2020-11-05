@@ -4,7 +4,7 @@
  */
 
 const seq = require('../seq')
-const { STRING, DECIMAL } = require('../types')
+const { STRING, DECIMAL, BOOLEAN } = require('../types')
 
 const User = seq.define('user', {
   userName: {
@@ -33,6 +33,12 @@ const User = seq.define('user', {
     type: STRING,
     allowNull: true,
     comment: '头像'
+  },
+  active: {
+    type: BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
+    comment: '是否正常状态'
   }
 })
 

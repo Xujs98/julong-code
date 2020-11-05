@@ -34,6 +34,7 @@ app.use(bodyparser({
 }))
 
 //session 配置
+/*
 app.keys = [REDIS_SECRRT_KEY]
 app.use(session({
   key:'julong.sid',     //cookie name
@@ -47,7 +48,7 @@ app.use(session({
     all:'127.0.0.1:6379'
   })
 }))
-
+*/
 
 
 app.use(json())

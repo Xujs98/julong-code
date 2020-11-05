@@ -3,7 +3,7 @@
  * @author  Xujs
  */
 
-const { User } = require('../db/model/index') //数据模型
+const { User, Menu, MenuChilderen } = require('../db/model/index') //数据模型
 const { formatUser } = require('./_format')
 /**
  * 查询
@@ -53,8 +53,36 @@ async function createUser({ userName, password, gender = 3, nickName  }){
   return result.dataValues
 }
 
+/**
+ * 获取菜单
+ * @param {string} userName 用户名
+ */
+async function getMenus(userName) {
+  // 连表查询
+  const result = await Menu.findAndCountAll({
+    // order: [ ['id', 'desc'] ],
+    // 包含连表
+    include: [
+      {
+        model: MenuChilderen,
+        attributes: ['authName', 'path'],
+      }
+    ],
+    attributes: ['authName']
+    
+  })
+
+  const res = result.rows.map(menus => {
+    const menusVal = menus.dataValues
+    return menusVal
+  })
+
+  return res
+}
+
 
 module.exports = {
   getUserInfo,
-  createUser
+  createUser,
+  getMenus
 }

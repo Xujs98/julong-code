@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 const util = require('util')
 const verify = util.promisify(jwt.verify)
 const { SECRET } = require('../../cache/secretKeys')
-const { isExist, register, login } = require('../../controller/user')
+const { isExist, register, login, menus } = require('../../controller/user')
 const userValidate = require('../../validator/user')
 const { genValidator } = require('../../middlewares/validator')
 
@@ -32,6 +32,28 @@ router.post('/login', async (ctx, next) => {
   ctx.body = await login(ctx, userName, password)
 })
 
+// 获取菜单
+router.get('/menus', async (ctx, next) => {
+  const token = ctx.header.authorization
+  ctx.body = await menus()
+/*
+  try {
+    const payload = await verify(token.split(' ')[1], SECRET)
+    ctx.body = {
+      data: {
+        userInfo: payload
+      },
+      meta: {
+        status: 200,
+        message: '请求成功'
+      }
+    }
+
+  } catch (ex) {
+    
+  }
+  */
+})
 
 // // 登录路由
 // router.post('/login', async (ctx, next) => {
