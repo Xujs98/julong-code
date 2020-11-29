@@ -39,8 +39,71 @@ function formatUser(list) {
   return _formatUserPicture(list)
 }
 
+/**
+ *  格式化菜单列表
+ * @param {Object} menulist 菜单列表
+ */
+function formatMenus(menulist) {
+  if (menulist === null) {
+    return menulist
+  }
+  var result = {}
+  var nav = []
+  var menu = {}
+  var menus = {}
+  for (i in menulist) {
+    // 处理导航条
+    if (menulist[i].menu == 0) {
+      nav.push(menulist[i])
+    }
 
+    // 处理一级菜单
+    if (menulist[i].menu == 1) {
+      menu[menulist[i].path] = {
+        ...menulist[i],
+        children: []
+      }
+    }
+
+    // 处理二、三级菜单
+    if (menulist[i].menu == 2) {
+      // 处理三级菜单
+      let idx = []
+      let res = menulist.map((item, index) => {
+        if (item.menu == 3 && menulist[i].path == item.parend_path) {
+          idx.push(index)
+          return item
+        }
+      })
+
+      // 处理二级菜单
+      menu[menulist[i].parend_path].children.push({
+        ...menulist[i],
+        children: idx.map((item) => {
+          return res[item]
+        })
+      })
+    }
+  }
+
+  // 格式化菜单
+  for (k in menu) {
+    if (!menus[menu[k].parend_path]) {
+      menus[menu[k].parend_path] = []
+    }
+    menus[menu[k].parend_path].push({
+      id: menu[k].id,
+      authName: menu[k].authName,
+      path: menu[k].path,
+      icon: menu[k].icon,
+      children: menu[k].children
+    })
+  }
+  result = {nav, menus}
+  return result
+}
 
 module.exports = {
-  formatUser
+  formatUser,
+  formatMenus
 }

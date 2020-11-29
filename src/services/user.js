@@ -3,8 +3,8 @@
  * @author  Xujs
  */
 
-const { User, Menu, MenuChilderen } = require('../db/model/index') //数据模型
-const { formatUser } = require('./_format')
+const { User, Menu } = require('../db/model/index') //数据模型
+const { formatUser, formatMenus } = require('./_format')
 /**
  * 查询
  * @param {string} userName 用户
@@ -62,22 +62,22 @@ async function getMenus(userName) {
   const result = await Menu.findAndCountAll({
     // order: [ ['id', 'desc'] ],
     // 包含连表
-    include: [
-      {
-        model: MenuChilderen,
-        attributes: ['authName', 'path'],
-      }
-    ],
-    attributes: ['authName']
+    // include: [
+    //   {
+    //     model: MenuChilderen,
+    //     attributes: ['id', 'authName', 'path', 'icon', ],
+    //   }
+    // ],
+    attributes: ['id', 'authName', 'parend_path', 'path', 'icon', 'menu']
     
   })
 
   const res = result.rows.map(menus => {
     const menusVal = menus.dataValues
-    return menusVal
+    return  menusVal
   })
+  return formatMenus(res)
 
-  return res
 }
 
 

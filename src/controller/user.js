@@ -89,8 +89,8 @@ async function menus(userName) {
   if(!res) {
     return
   }
-  menuSuccessInfo.data = {...res}
 
+  menuSuccessInfo.data = {...res}
   return new SuccessModel(menuSuccessInfo)
 }
 
