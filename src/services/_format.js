@@ -103,7 +103,46 @@ function formatMenus(menulist) {
   return result
 }
 
+/**
+ *  格式化视频列表
+ * @param {Object} videoData 视频数据列表
+ */
+function formVideo (videoData) {
+	let video_data_list = videoData.map((item => {
+		let dataAll = item
+		let classifyData = dataAll.classify.split('-')
+		dataAll.classify = {parent: classifyData[0], son: classifyData[1]}
+		if (classifyData.length > 2) {
+			dataAll.classify.son = classifyData
+			dataAll.classify.son.shift()
+		}
+		return dataAll
+	}))
+}
+
+/**
+ *  正则取中间文本
+ * @param {String} str 原文本
+ * @param {String} stars 左边
+ * @param {String} end 右边
+ * @return {Array} 返回数组
+ */
+function getCenterText (str, stars, end) {
+	// create regexp
+	let Regexp = new RegExp("{stars}(.*?)end", 'ig')
+	// create void Array
+	let strArr = []
+	// iteration regexp result
+	while ( result = Regexp.exec(str.toString()) ) {
+		// insert result
+		strArr.push(result)
+	}
+	// return result
+	return strArr
+}
+
 module.exports = {
   formatUser,
-  formatMenus
+  formatMenus,
+  formVideo
 }

@@ -1,0 +1,107 @@
+[33mcommit 2e54c61753747b752d6e2b91489aa685cb75b041[m[33m ([m[1;36mHEAD -> [m[1;32muser[m[33m, [m[1;31morigin/user[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Xujs <1371446705@qq.com>
+Date:   Thu Nov 5 18:18:59 2020 +0800
+
+    feat:菜单接口
+
+[33mcommit 133b82ae137b89f8e7b12cf7f8b393572367ec22[m
+Author: Xujs <1371446705@qq.com>
+Date:   Mon Oct 26 09:44:39 2020 +0800
+
+    feat:登录接口t
+
+[33mcommit 2c7247e7b74137f4dad54e86c6af93530ce9a5fc[m
+Author: Xujs <1371446705@qq.com>
+Date:   Mon Oct 26 06:13:54 2020 +0800
+
+    feat:用户信息格式校验
+
+[33mcommit 1083028bbe773df46d523f4df6b681871dd8a392[m
+Author: Xujs <1371446705@qq.com>
+Date:   Mon Oct 26 05:01:22 2020 +0800
+
+    feat:新增注册接口
+
+[33mcommit cd3200c36059fac9bdc39c2964831a659da153d2[m
+Author: Xujs <1371446705@qq.com>
+Date:   Sun Oct 25 14:46:32 2020 +0800
+
+    feat:开发 isExist 接口
+
+[33mcommit 2d14cf3d7465f49f79002e03ec110888bd5f27a6[m
+Author: Xujs <1371446705@qq.com>
+Date:   Fri Oct 23 18:14:40 2020 +0800
+
+    feat:用户数据模型
+
+[33mcommit 31f1a2f5405271762f0b211429e7ae836a6cb331[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Xujs <1371446705@qq.com>
+Date:   Fri Oct 23 16:47:53 2020 +0800
+
+    refactor:整理文件目录
+
+[33mcommit 2e0e95c3355bd02d678b5d87f45d8ca55bfd7b23[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Wed Oct 7 18:37:16 2020 +0800
+
+    feat:新增mysql操作
+
+[33mcommit 0078e1e7c35a02f7e5def7b1600c8a8e6fb26769[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Wed Oct 7 17:59:06 2020 +0800
+
+    feat: 配置jest 测试jest
+
+[33mcommit 155cd7a7449f59267cc604ff3b565d98ca639d42[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Wed Oct 7 16:16:45 2020 +0800
+
+    feat:配置session
+
+[33mcommit 98eebae05bac607808bff1ec2f18e1d6cb20d83a[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Tue Oct 6 13:32:49 2020 +0800
+
+    feat:新增redis
+
+[33mcommit 24f4a4d02fa1950ebbe677ba8c3f523da4be7cfc[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Mon Oct 5 14:23:36 2020 +0800
+
+    fix:修复无法处理提交的post请求
+
+[33mcommit 6552c15f2014b11a3c1d2a256f0aeab99187eccb[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Sun Oct 4 17:35:01 2020 +0800
+
+    refactor:调整目录结构
+
+[33mcommit 38f5bd963eb2bc509bac25f20606715031616e3b[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Sun Oct 4 16:28:13 2020 +0800
+
+    说明
+
+[33mcommit e5afc6f2f17b925c2082fedc2ab6af46d10923a2[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Sun Oct 4 16:05:15 2020 +0800
+
+    第三次提交
+
+[33mcommit ad47e715b4088475cdb6e6cf6c793162b450384d[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Sun Oct 4 16:00:38 2020 +0800
+
+    测试第二次
+
+[33mcommit 1d0dd1bb16053763ae738e94e5b81851e7948cf5[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Sun Oct 4 15:57:31 2020 +0800
+
+    测试一下
+
+[33mcommit 23bcb867293daaccde2c586285cb142024e09349[m
+Author: Xu.js <1371446705@qq.com>
+Date:   Sun Oct 4 15:49:03 2020 +0800
+
+    初始化提交

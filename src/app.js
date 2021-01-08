@@ -1,3 +1,4 @@
+
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -15,6 +16,7 @@ const jwtkoa = require('koa-jwt')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const userApiRouter = require('./routes/api/user') // 用户路由
+const videoApiRouter = require('./routes/api/video') //视频路由
 
 // error handler
 onerror(app)
@@ -73,6 +75,7 @@ app.use(views(__dirname + '/views', {
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(userApiRouter.routes(), userApiRouter.allowedMethods()) // 用户操作
+app.use(videoApiRouter.routes(), videoApiRouter.allowedMethods())
 
 
 // error-handling

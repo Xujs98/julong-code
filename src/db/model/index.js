@@ -5,6 +5,7 @@
 
 const User = require('./User')
 const Menu = require('./Menu')
+const Video = require('./Video')
 
 
 // 外键关联
@@ -16,6 +17,7 @@ const Menu = require('./Menu')
 
 module.exports = {
   User,
-  Menu
+  Menu,
+  Video
 }
 

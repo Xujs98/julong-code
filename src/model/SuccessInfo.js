@@ -1,3 +1,4 @@
+
 /**
  * @description 成功信息集合 包涵 data 和 meta
  * @author Xujs
@@ -21,6 +22,12 @@ module.exports = {
   menuSuccessInfo: {
     meta: {
       message: '获取菜单列表成功',
+      status: 200
+    }
+  },
+  videoAllDataSuccessInfo: {
+    meta: {
+      message: '获取视频列表成功',
       status: 200
     }
   }
