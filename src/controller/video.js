@@ -1,12 +1,11 @@
-
 /** *
 * @description video cotroller
 * @author xujs
 */
 
-const { getAllVideoData, insertVideo } = require('../sevice/video') 
+const { getAllVideoData, insertVideo } = require('../services/video') 
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
-const { videoAllDataSuccessInfo } = require('../model/SuccessInfo') // 成功返回信息
+const { videoAllDataSuccessInfo, videoAddSuccessInfo } = require('../model/SuccessInfo') // 成功返回信息
 
 /**
  * 获取全部视频数据
@@ -25,6 +24,7 @@ async function allVideoData({ page, number, order }) {
  */
 async function addVideo (data) {
 	const res = await insertVideo(data)
+	return new SuccessModel(videoAddSuccessInfo)
 }
 
 module.exports = {

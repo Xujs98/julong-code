@@ -3,7 +3,7 @@
 */
 
 const seq = require('../seq')
-const { STRING, TEXT, DECIMAL } = require('../type')
+const { STRING, TEXT, DECIMAL } = require('../types')
 const unkonwn = '未知'
 
 const Video = seq.define('video', {

@@ -30,5 +30,11 @@ module.exports = {
       message: '获取视频列表成功',
       status: 200
     }
+  },
+  videoAddSuccessInfo: {
+    meta: {
+      message: '上传视频成功',
+      status: 200
+    }
   }
 }

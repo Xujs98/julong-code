@@ -4,12 +4,12 @@
 * @author xujs
 */
 
-const { video } = require('../db/model/index') // 引入数据模型
+const { Video } = require('../db/model/index') //数据模型
 const { formVideo } = require('./_format')
 
 async function getAllVideoData (whereItmeData) {
 	// 数据库查找全部视频数据
-	const result = await video.findAndCountALL({
+	const result = await Video.findAndCountALL({
 		where: {
 			...whereItmeData // 解构对象
 		},
@@ -35,7 +35,7 @@ async function getAllVideoData (whereItmeData) {
 }
 
 async function insertVideo (data) {
-	const result = await video.create({
+	const result = await Video.create({
 		...data
 	})
 	return result.dataValues
